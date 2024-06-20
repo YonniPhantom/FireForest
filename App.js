@@ -1,4 +1,4 @@
-// App.jsx
+
 import React, { useState, useEffect } from 'react';
 import { CredentialsContext } from './src/Components/CredentialsContext';
 import RootStack from './src/navigation/RootStack';
