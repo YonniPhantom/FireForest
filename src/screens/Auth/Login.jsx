@@ -2,8 +2,10 @@ import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, 
 import React, { useState, useContext } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { CredentialsContext } from '../../Components/CredentialsContext';
+import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
+    const navigation = useNavigation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -16,6 +18,7 @@ const Login = () => {
 
         setStoredCredentials({ email, password });
     }
+
 
     return (
         <KeyboardAwareScrollView style={{ flex: 1 }} resetScrollToCoords={{ x: 0, y: 0 }} scrollEnabled={true}>
@@ -53,7 +56,7 @@ const Login = () => {
                             <View style={[styles.section,{flexDirection: 'row',marginTop: 20,justifyContent:"center"}]}>
                                 
                                 <Text style={styles.forgote}>¿No tienes cuenta?</Text>
-                                <TouchableOpacity onPress={handleLogin}style={{marginLeft: 8}} >
+                                <TouchableOpacity onPress={()=>navigation.navigate("Register")}style={{marginLeft: 8}} >
                                     <Text style={styles.forgotebutton}>Registrate</Text>
                                 </TouchableOpacity>
                             </View>
