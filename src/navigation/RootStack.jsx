@@ -8,6 +8,7 @@ import Login from "../screens/Auth/Login";
 import HelloWorld from '../screens/HelloWorld';
 
 export default function RootStack() {
+
     return (
         <CredentialsContext.Consumer>
             {({ storedCredentials }) => (
