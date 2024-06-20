@@ -12,7 +12,7 @@ const Login = () => {
     const { setStoredCredentials } = useContext(CredentialsContext);
 
     const handleLogin = async () => {
-        if(!email || !password) return setMessage("Llena todos los datos");
+        if (!email || !password) return setMessage("Llena todos los datos");
 
         setStoredCredentials({ email, password });
     }
@@ -24,7 +24,7 @@ const Login = () => {
 
                     <View style={styles.container}>
 
-                        <Image style={styles.imagen} source={require("../../../assets/iconito.jpg")} />
+                        <Image style={styles.imagen} source={require("../../../assets/adaptive-icon.png")} />
 
                         <View style={styles.form}>
                             <Text style={styles.errorMessage}>{message}</Text>
@@ -38,12 +38,25 @@ const Login = () => {
                                 <Text style={styles.subtitle}>Contraseña</Text>
                                 <TextInput style={styles.input} placeholder="********" secureTextEntry={true} value={password} onChangeText={setPassword} />
                             </View>
-                            <View style={styles.section}>
-                                <Text style={styles.subtitle}>¿Olvidaste tu contraseña?</Text>
+                            <View style={[styles.section,{flexDirection: 'row',justifyContent:"center"}]}>
+                                
+                                <Text style={styles.forgote}>¿Olvidaste tu contraseña?</Text>
+                                <TouchableOpacity onPress={handleLogin}style={{marginLeft: 8}} >
+                                    <Text style={styles.forgotebutton}>Restablecela</Text>
+                                </TouchableOpacity>
                             </View>
-                            <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
+
+                            <TouchableOpacity onPress={handleLogin} style={[styles.loginButton,{marginTop: -50}]}>
                                 <Text style={styles.buttonText}>Ingresar</Text>
                             </TouchableOpacity>
+
+                            <View style={[styles.section,{flexDirection: 'row',marginTop: 20,justifyContent:"center"}]}>
+                                
+                                <Text style={styles.forgote}>¿No tienes cuenta?</Text>
+                                <TouchableOpacity onPress={handleLogin}style={{marginLeft: 8}} >
+                                    <Text style={styles.forgotebutton}>Registrate</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
 
                     </View>
@@ -62,7 +75,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 200
     },
-    imagen:{
+    imagen: {
         width: 200,
         height: 200
     },
@@ -80,8 +93,23 @@ const styles = StyleSheet.create({
     subtitle: {
         color: 'gray',
         fontWeight: 'bold',
-        fontFamily:'monospace',
-        marginBottom: 10
+        fontFamily: 'monospace',
+        marginBottom: 10,
+        fontSize: 20
+    },
+    forgote: {
+        color: 'gray',
+        fontWeight: 'bold',
+        fontFamily: 'monospace',
+        marginBottom: 10,
+        fontSize: 20
+    },
+    forgotebutton:{
+        color: 'red',
+        fontStyle:'italic',
+        fontFamily: 'monospace',
+        marginBottom: 10,
+        fontSize: 20
     },
     form: {
         alignItems: 'center',
@@ -89,20 +117,21 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
-        textAlign: 'center',
-        borderBottomWidth: 0.5
+
+        borderBottomWidth: 0.5,
+        fontSize: 18
     },
     loginButton: {
-        backgroundColor: 'purple',
-        width: 200,
-        height: 40,
+        backgroundColor: 'red',
+        width: 300,
+        height: 60,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 25
     },
     buttonText: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: 'bold'
     },
     errorMessage: {
