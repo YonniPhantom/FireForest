@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, SafeAreaView, Image } from 'react-native'
 import React, { useState, useContext } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { CredentialsContext } from '../../Components/CredentialsContext';
@@ -24,7 +24,7 @@ const Login = () => {
 
                     <View style={styles.container}>
 
-                        <Text style={styles.title}>Inicia Sesión</Text>
+                        <Image style={styles.imagen} source={require("../../../assets/iconito.jpg")} />
 
                         <View style={styles.form}>
                             <Text style={styles.errorMessage}>{message}</Text>
@@ -38,7 +38,9 @@ const Login = () => {
                                 <Text style={styles.subtitle}>Contraseña</Text>
                                 <TextInput style={styles.input} placeholder="********" secureTextEntry={true} value={password} onChangeText={setPassword} />
                             </View>
-
+                            <View style={styles.section}>
+                                <Text style={styles.subtitle}>¿Olvidaste tu contraseña?</Text>
+                            </View>
                             <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
                                 <Text style={styles.buttonText}>Ingresar</Text>
                             </TouchableOpacity>
@@ -52,13 +54,17 @@ const Login = () => {
 }
 
 export default Login
-
+//Fuente: Inika
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 80
+        marginTop: 200
+    },
+    imagen:{
+        width: 200,
+        height: 200
     },
     title: {
         fontSize: 26,
@@ -69,10 +75,12 @@ const styles = StyleSheet.create({
         width: 300,
         height: 50,
         marginBottom: 50
+
     },
     subtitle: {
         color: 'gray',
         fontWeight: 'bold',
+        fontFamily:'monospace',
         marginBottom: 10
     },
     form: {
@@ -80,10 +88,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     input: {
-        backgroundColor: 'lightgray',
-        borderRadius: 10,
         height: 40,
-        textAlign: 'center'
+        textAlign: 'center',
+        borderBottomWidth: 0.5
     },
     loginButton: {
         backgroundColor: 'purple',
